@@ -8,7 +8,7 @@ background:#f4f4f4;
 
 display:grid;
 
-grid-template-columns: repeat(10,45px); /*это значит 10 колонок шириной 45 (делает поле)*/
+grid-template-columns: repeat(10,repeat(10, 1fr)); /*это значит 10 колонок шириной 45 (делает поле)*/
 
 gap:5px;
 
@@ -18,6 +18,16 @@ margin:20px;
 
 width: fit-content;  /*Ограничим ширину, чтобы клетки не разлетались*/
 
+#game-board-container {
+    position: relative; /* Это "якорь", чтобы сетка не улетела в угол экрана */
+    width: 100%;        /* Растягиваем на всю ширину смартфона */
+    max-width: 500px;   /* Но не делаем гигантским на компьютере */
+    margin: 0 auto;     /* Центрируем */
+}
+
+.snake-image {
+    width: 100%;        /* Змея всегда занимает всю ширину контейнера */
+    display: block;
 }
 
 .cell{
