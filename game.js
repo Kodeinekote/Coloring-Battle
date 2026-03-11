@@ -11,7 +11,7 @@ const posText = document.getElementById("playerPos")
 const cells = []
 
 //Создаем поле (100 клеток)
-for(let i=1;i<100;i++){ //for - это цикл, 100 - это 100 клеток. Лет 1 - это начнем с единицы
+for(let i=1;i<101;i++){ //for - это цикл, 100 - это 100 клеток. Лет 1 - это начнем с единицы
 
 let cell = document.createElement("div")
 
@@ -26,7 +26,9 @@ cells.push(cell)
 }
 
 //ставим игрока на старт
-cells[0].style.background = "gold" //первая клетка станет золотой
+cells[0].style.background = "silver" //сильвер - первая клетка станет золотой
+
+cells[99].style.background = "gold" //голд - финишная клетка станет золотой
 
 //кнопка кубика
 rollButton.onclick = function(){ //а это уже кубик - ролл
