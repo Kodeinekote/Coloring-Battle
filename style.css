@@ -26,9 +26,9 @@ width:45px;
 
 height:45px;
 
-background:white;
+background:wrgba(255, 255, 255, 0.15); /* 255, 255, 255 — это белый цвет, 0.15 — прозрачность */
   
-border: 2px solid #ccc; /*Тонкая рамка в 2 пикселя*/
+border: 2px solid rgba(255, 255, 255, 0.3); /*Тонкая рамка в 2 пикселя? ,белая рамка (255-белый)*/
   
 border-radius:8px;
 
