@@ -8,13 +8,15 @@ background:#f4f4f4;
 
 display:grid;
 
-grid-template-columns: repeat(5,60px); //это значит 5 колонок шириной 60 (делает поле)
+grid-template-columns: repeat(10,40px); //это значит 10 колонок шириной 40 (делает поле)
 
 gap:5px;
 
 justify-content:center;
 
 margin:20px;
+
+width: fit-content;  //Ограничим ширину, чтобы клетки не разлетались
 
 }
 
