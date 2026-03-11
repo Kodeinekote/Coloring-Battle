@@ -8,7 +8,7 @@ background:#f4f4f4;
 
 display:grid;
 
-grid-template-columns: repeat(5,60px);
+grid-template-columns: repeat(5,60px); //это значит 5 колонок шириной 60 (делает поле)
 
 gap:5px;
 
