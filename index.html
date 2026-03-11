@@ -2,32 +2,35 @@
 <html lang="ru">
 
 <head>
-<meta charset="UTF-8">
-<title>Telegram Mini Game</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 Цветная Битва</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="container">
+        <h1>🐍 Цветная Битва</h1>
+        
+        <div class="game-wrapper">
+            <div class="snake-board-container">
+                <!-- Контейнер для клеток - БЕЗ SVG -->
+                <div id="game-board" class="game-board"></div>
+            </div>
+        </div>
 
-<h1>🎲 Мини игра</h1>
+        <div class="controls">
+            <button id="rollDice" class="btn-roll">🎲 Бросить кубик</button>
+            <div class="player-info">
+                <p>Позиция: <span id="playerPos">1</span>/100</p>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div id="game-board"></div>
-
-<button id="rollDice">Бросить кубик</button>
-
-<p>Позиция игрока: <span id="playerPos">0</span></p>
-
-<div id="game-board-container">
-
-<img src="images/snake.png.jpg" class="snake-image">
-
-<div id="game-board"></div>
-
-</div>
-    
-<script src="game.js"></script>
-
+    <script src="game.js"></script>
 </body>
+
 </html>
