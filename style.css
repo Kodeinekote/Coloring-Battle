@@ -1,55 +1,189 @@
-body{
-font-family: Arial;
-text-align:center;
-background:#f4f4f4;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#game-board{
-
-display:grid;
-
-grid-template-columns: repeat(10,repeat(10, 1fr)); /*это значит 10 колонок шириной 45 (делает поле)*/
-
-gap:5px;
-
-justify-content:center;
-
-margin:20px;
-
-width: fit-content;  /*Ограничим ширину, чтобы клетки не разлетались*/
-
-#game-board-container {
-    position: relative; /* Это "якорь", чтобы сетка не улетела в угол экрана */
-    width: 100%;        /* Растягиваем на всю ширину смартфона */
-    max-width: 500px;   /* Но не делаем гигантским на компьютере */
-    margin: 0 auto;     /* Центрируем */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 
-.snake-image {
-    width: 100%;        /* Змея всегда занимает всю ширину контейнера */
-    display: block;
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    overflow: hidden;
 }
 
-.cell{
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
 
-width:45px;
+.game-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-height:45px;
+.snake-board-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2/3;
+    max-width: 300px;
+}
 
-background:rgba(255, 255, 255, 0.15); /* 255, 255, 255 — это белый цвет, 0.15 — прозрачность */
-  
-border: 2px solid rgba(255, 255, 255, 0.3); /*Тонкая рамка в 2 пикселя? ,белая рамка (255-белый)*/
-  
-border-radius:8px;
+.snake-svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-display:flex;
+.game-board {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+}
 
-align-items:center;
+.cell {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid rgba(100, 150, 255, 0.4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-justify-content:center;
+.cell:hover {
+    background: rgba(100, 200, 255, 0.3);
+    transform: scale(1.1);
+}
 
-font-weight:bold;
+.cell.player {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transform: scale(1.15);
+}
 
-box-shadow:0 2px 5px rgba(0,0,0,0.2);
+.cell.powerup {
+    background: #ffd700;
+    color: #333;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+    animation: pulse 1.5s ease-in-out infinite;
+}
 
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn-roll {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-roll:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-roll:active {
+    transform: translateY(0);
+}
+
+.player-info {
+    text-align: center;
+}
+
+.player-info p {
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    width: 0%;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .cell {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+    }
+
+    .btn-roll {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
 }
