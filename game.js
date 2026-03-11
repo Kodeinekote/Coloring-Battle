@@ -1,12 +1,17 @@
-let playerPosition = 0
+let playerPosition = 1 //лет плейер позишн - игрок начинает на клетке 1
 
+// Находим элементы страницы
 const board = document.getElementById("game-board")
 
 const rollButton = document.getElementById("rollDice")
 
 const posText = document.getElementById("playerPos")
 
-for(let i=0;i<50;i++){ //for - это цикл, 50 - это 50 клеток
+//Массив для хранения клеток
+const cells = []
+
+//Создаем поле (100 клеток)
+for(let i=1;i<100;i++){ //for - это цикл, 100 - это 100 клеток. Лет 1 - это начнем с единицы
 
 let cell = document.createElement("div")
 
@@ -16,14 +21,42 @@ cell.innerText=i
 
 board.appendChild(cell)
 
+// сохраняем клетку в массив
+cells.push(cell)
 }
 
+//ставим игрока на старт
+cells[0].style.background = "gold" //первая клетка станет золотой
+
+//кнопка кубика
 rollButton.onclick = function(){ //а это уже кубик - ролл
 
 let dice = Math.floor(Math.random()*6)+1
 
 playerPosition += dice
 
+if(playerPosition > 100){
+playerPosition = 100
+}
+
 posText.innerText = playerPosition
+
+updatePlayer()
+
+}
+
+//функция перемещения игрока
+
+function updatePlayer(){
+
+cells.forEach(cell => {
+cell.style.background = "white"
+})
+
+cells[playerPosition-1].style.background = "gold"
+
+}
+
+}
 
 }
