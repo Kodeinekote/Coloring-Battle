@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disney Battle</title>
+    </head>
+<body>
+
+    <div id="game-container">
+        <h1>Coloring Battle</h1> ''Это наименование игры, оно наверху
+         <h2>Никнейм</h2> ''Это отображает никнейм игрока, он ниже наименования игры и не такой гигантский
+
+</div> </body>
+</html>
