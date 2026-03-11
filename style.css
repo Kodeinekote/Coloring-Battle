@@ -8,7 +8,7 @@ background:#f4f4f4;
 
 display:grid;
 
-grid-template-columns: repeat(10,40px); //это значит 10 колонок шириной 40 (делает поле)
+grid-template-columns: repeat(10,45px); /*это значит 10 колонок шириной 45 (делает поле)*/
 
 gap:5px;
 
@@ -16,18 +16,20 @@ justify-content:center;
 
 margin:20px;
 
-width: fit-content;  //Ограничим ширину, чтобы клетки не разлетались
+width: fit-content;  /*Ограничим ширину, чтобы клетки не разлетались*/
 
 }
 
 .cell{
 
-width:60px;
+width:45px;
 
-height:60px;
+height:45px;
 
 background:white;
-
+  
+border: 2px solid #ccc; /*Тонкая рамка в 2 пикселя*/
+  
 border-radius:8px;
 
 display:flex;
