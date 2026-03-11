@@ -52,9 +52,13 @@ updatePlayer()
 
 function updatePlayer(){
 
-cells.forEach(cell => {
-cell.style.background = "white"
-})
+cells.forEach((cell, index) => {
+if (index === 99) {
+cell.style.background = "red";
+ } else {
+cell.style.background = "white";
+        }
+    });
 
 cells[playerPosition-1].style.background = "gold"
 
