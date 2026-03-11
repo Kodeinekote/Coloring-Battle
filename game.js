@@ -58,7 +58,3 @@ cell.style.background = "white"
 cells[playerPosition-1].style.background = "gold"
 
 }
-
-}
-
-}
