@@ -56,7 +56,7 @@ cells.forEach((cell, index) => {
 if (index === 99) {
 cell.style.background = "gold";
  } else {
-cell.style.background = "white";
+cell.style.background = "rgba(255, 255, 255, 0.15)";
         }
     });
 
